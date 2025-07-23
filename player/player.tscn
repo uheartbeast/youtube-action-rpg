@@ -3,23 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dnhvq8ohnbqvf" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dd4q8lmuynn4e" path="res://player/player.gd" id="1_rkbax"]
 
-[sub_resource type="Animation" id="Animation_rkbax"]
-resource_name = "stand_right"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
 tracks/0/type = "value"
@@ -35,8 +18,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_yw30f"]
-resource_name = "run_right"
+[sub_resource type="Animation" id="Animation_8t03j"]
+resource_name = "run_down"
 length = 0.6
 loop_mode = 1
 step = 0.1
@@ -50,59 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 4, 5, 0]
-}
-
-[sub_resource type="Animation" id="Animation_qjkh3"]
-resource_name = "stand_up"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-
-[sub_resource type="Animation" id="Animation_g6k8r"]
-resource_name = "run_up"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10, 11, 6]
-}
-
-[sub_resource type="Animation" id="Animation_boad6"]
-resource_name = "stand_left"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
+"values": [19, 20, 21, 22, 23, 18]
 }
 
 [sub_resource type="Animation" id="Animation_rgyib"]
@@ -123,6 +54,42 @@ tracks/0/keys = {
 "values": [13, 14, 15, 16, 17, 12]
 }
 
+[sub_resource type="Animation" id="Animation_yw30f"]
+resource_name = "run_right"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "run_up"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 6]
+}
+
 [sub_resource type="Animation" id="Animation_hg6s5"]
 resource_name = "stand_down"
 length = 0.1
@@ -140,10 +107,9 @@ tracks/0/keys = {
 "values": [18]
 }
 
-[sub_resource type="Animation" id="Animation_8t03j"]
-resource_name = "run_down"
-length = 0.6
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_boad6"]
+resource_name = "stand_left"
+length = 0.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -152,10 +118,44 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19, 20, 21, 22, 23, 18]
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_rkbax"]
+resource_name = "stand_right"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "stand_up"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
@@ -246,7 +246,6 @@ transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTrans
 graph_offset = Vector2(22, -81)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g1dw6"]
-graph_offset = Vector2(-225, 86.6667)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_rkbax")
 nodes/StateMachine/position = Vector2(-66.6667, 150)
 nodes/output/position = Vector2(183.333, 200)

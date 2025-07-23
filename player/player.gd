@@ -8,7 +8,7 @@ var input_vector: = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
 	
-	input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if input_vector != Vector2.ZERO:
 		var direction_vector: = Vector2(input_vector.x, -input_vector.y)
