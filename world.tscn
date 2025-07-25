@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6voj8psa80tg"]
+[gd_scene load_steps=3 format=3 uid="uid://c6voj8psa80tg"]
 
 [ext_resource type="PackedScene" uid="uid://vrjqw2e4onkj" path="res://player/player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://kgpim4yk6ppj" path="res://world/grass_background.png" id="1_fj7yv"]
 
 [node name="World" type="Node2D"]
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(320, 192)
+
+[node name="GrassBackground" type="TextureRect" parent="Parallax2D"]
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("1_fj7yv")
+stretch_mode = 1
+
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-position = Vector2(174, 92)
+position = Vector2(200, 96)
