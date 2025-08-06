@@ -463,7 +463,7 @@ states/RunState/position = Vector2(383.12, 210.667)
 states/StandState/node = SubResource("AnimationNodeBlendSpace2D_boad6")
 states/StandState/position = Vector2(383.167, 100.528)
 transitions = ["Start", "StandState", SubResource("AnimationNodeStateMachineTransition_rgyib"), "StandState", "RunState", SubResource("AnimationNodeStateMachineTransition_rkbax"), "RunState", "StandState", SubResource("AnimationNodeStateMachineTransition_g1dw6")]
-graph_offset = Vector2(21, 9)
+graph_offset = Vector2(-17, 40)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kb6p2"]
 animation = &"roll_left"
@@ -511,11 +511,12 @@ states/MoveState/position = Vector2(424.667, 100.083)
 states/RollState/node = SubResource("AnimationNodeBlendSpace2D_g1dw6")
 states/RollState/position = Vector2(422.671, -0.166659)
 transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_yw30f"), "MoveState", "AttackState", SubResource("AnimationNodeStateMachineTransition_qjkh3"), "AttackState", "MoveState", SubResource("AnimationNodeStateMachineTransition_g6k8r"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_boad6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_hg6s5")]
-graph_offset = Vector2(-54, -125)
+graph_offset = Vector2(-74, -6)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_g1dw6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g1dw6"]
+graph_offset = Vector2(-256.081, 69.4793)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_rkbax")
 nodes/StateMachine/position = Vector2(-66.6667, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_g1dw6")
@@ -523,7 +524,7 @@ nodes/TimeScale/position = Vector2(183.333, 150)
 nodes/output/position = Vector2(350, 183.333)
 node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_rkbax")
 

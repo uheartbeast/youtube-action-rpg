@@ -24,6 +24,10 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=3
 
+[global_group]
+
+player=""
+
 [input]
 
 move_left={
