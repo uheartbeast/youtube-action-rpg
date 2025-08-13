@@ -4,6 +4,7 @@ const SPEED = 30
 const FRICTION = 500
 
 @export var range: = 128
+@export var stats: Stats
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -13,7 +14,9 @@ const FRICTION = 500
 
 
 func _ready() -> void:
+	stats = stats.duplicate()
 	hurtbox.hurt.connect(take_hit.call_deferred)
+	stats.no_health.connect(queue_free)
 
 func _physics_process(delta: float) -> void:
 	var state = playback.get_current_node()
@@ -32,6 +35,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 func take_hit(other_hitbox: Hitbox) -> void:
+	stats.health -= other_hitbox.damage
 	velocity = other_hitbox.knockback_direction * other_hitbox.knockback_amount
 	playback.start("HitState")
 

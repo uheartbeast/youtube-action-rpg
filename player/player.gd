@@ -3,6 +3,8 @@ class_name Player extends CharacterBody2D
 const SPEED = 100.0
 const ROLL_SPEED = 125.0
 
+@export var stats: Stats
+
 var input_vector: = Vector2.ZERO
 var last_input_vector: = Vector2.ZERO
 

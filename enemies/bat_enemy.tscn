@@ -1,9 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bth14i0usvwsd"]
+[gd_scene load_steps=22 format=3 uid="uid://bth14i0usvwsd"]
 
 [ext_resource type="Script" uid="uid://qmex7p80u81n" path="res://enemies/bat_enemy.gd" id="1_5gx0a"]
 [ext_resource type="Texture2D" uid="uid://1aoe5e3ooxml" path="res://enemies/bat.png" id="1_e7gs6"]
 [ext_resource type="Texture2D" uid="uid://cuq66us1fgsog" path="res://shadows/small_shadow.png" id="2_5gx0a"]
+[ext_resource type="Script" uid="uid://bjwsvosmyrqvp" path="res://stats.gd" id="2_erta8"]
 [ext_resource type="Script" uid="uid://bd2edxcfsqqt1" path="res://damage_boxes/hurtbox.gd" id="4_grp10"]
+
+[sub_resource type="Resource" id="Resource_ww8v4"]
+script = ExtResource("2_erta8")
+health = 3
+max_health = 3
+metadata/_custom_type_script = "uid://bjwsvosmyrqvp"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e7gs6"]
 radius = 5.0
@@ -162,6 +169,7 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_5gx0a")
 range = 104
+stats = SubResource("Resource_ww8v4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e7gs6")

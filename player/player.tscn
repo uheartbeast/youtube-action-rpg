@@ -1,9 +1,16 @@
-[gd_scene load_steps=55 format=3 uid="uid://vrjqw2e4onkj"]
+[gd_scene load_steps=57 format=3 uid="uid://vrjqw2e4onkj"]
 
 [ext_resource type="Texture2D" uid="uid://dnhvq8ohnbqvf" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dd4q8lmuynn4e" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://bjwsvosmyrqvp" path="res://stats.gd" id="2_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://bo7vovmopeg6k" path="res://shadows/medium_shadow.png" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://pohlsv6qsc43" path="res://damage_boxes/hitbox.gd" id="4_yw30f"]
+
+[sub_resource type="Resource" id="Resource_g6k8r"]
+script = ExtResource("2_qjkh3")
+health = 4
+max_health = 4
+metadata/_custom_type_script = "uid://bjwsvosmyrqvp"
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
@@ -590,6 +597,7 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_rkbax")
+stats = SubResource("Resource_g6k8r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
