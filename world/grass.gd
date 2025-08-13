@@ -2,12 +2,12 @@ extends Node2D
 
 @export var GRASS_EFFECT: PackedScene
 
-@onready var area_2d: Area2D = $Area2D
+@onready var hurtbox: Hurtbox = $Hurtbox
 
 func _ready() -> void:
-	area_2d.area_entered.connect(_on_area_2d_area_entered)
+	hurtbox.hurt.connect(_on_hurt)
 
-func _on_area_2d_area_entered(other_area_2d: Area2D) -> void:
+func _on_hurt(other_hitbox: Hitbox) -> void:
 	var grass_effect_instance = GRASS_EFFECT.instantiate()
 	get_tree().current_scene.add_child(grass_effect_instance)
 	grass_effect_instance.global_position = global_position

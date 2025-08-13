@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bth14i0usvwsd"]
+[gd_scene load_steps=17 format=3 uid="uid://bth14i0usvwsd"]
 
 [ext_resource type="Script" uid="uid://qmex7p80u81n" path="res://enemies/bat_enemy.gd" id="1_5gx0a"]
 [ext_resource type="Texture2D" uid="uid://1aoe5e3ooxml" path="res://enemies/bat.png" id="1_e7gs6"]
 [ext_resource type="Texture2D" uid="uid://cuq66us1fgsog" path="res://shadows/small_shadow.png" id="2_5gx0a"]
+[ext_resource type="Script" uid="uid://bd2edxcfsqqt1" path="res://damage_boxes/hurtbox.gd" id="4_grp10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e7gs6"]
 radius = 5.0
@@ -76,6 +77,9 @@ nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_boacx")
 nodes/StateMachine/position = Vector2(50, 116.667)
 node_connections = [&"output", 0, &"StateMachine"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gx0a"]
+radius = 4.0
+
 [node name="BatEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
@@ -85,7 +89,7 @@ range = 104
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e7gs6")
-offset = Vector2(0, -4)
+offset = Vector2(-1, -4)
 hframes = 5
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
@@ -108,3 +112,13 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(8, 0)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("4_grp10")
+metadata/_custom_type_script = "uid://bd2edxcfsqqt1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_5gx0a")

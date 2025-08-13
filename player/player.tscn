@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://vrjqw2e4onkj"]
+[gd_scene load_steps=55 format=3 uid="uid://vrjqw2e4onkj"]
 
 [ext_resource type="Texture2D" uid="uid://dnhvq8ohnbqvf" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dd4q8lmuynn4e" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://bo7vovmopeg6k" path="res://shadows/medium_shadow.png" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://pohlsv6qsc43" path="res://damage_boxes/hitbox.gd" id="4_yw30f"]
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 length = 0.001
@@ -22,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("Hitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("Hitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("Hitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +110,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("Hitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/1/path = NodePath("Hitbox/CollisionPolygon2D:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -565,6 +566,10 @@ show_behind_parent = true
 position = Vector2(0, 3)
 texture = ExtResource("3_g1dw6")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://pohlsv6qsc43"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
