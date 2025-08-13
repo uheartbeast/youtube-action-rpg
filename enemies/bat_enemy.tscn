@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bth14i0usvwsd"]
+[gd_scene load_steps=24 format=3 uid="uid://bth14i0usvwsd"]
 
 [ext_resource type="Script" uid="uid://qmex7p80u81n" path="res://enemies/bat_enemy.gd" id="1_5gx0a"]
 [ext_resource type="Texture2D" uid="uid://1aoe5e3ooxml" path="res://enemies/bat.png" id="1_e7gs6"]
 [ext_resource type="Texture2D" uid="uid://cuq66us1fgsog" path="res://shadows/small_shadow.png" id="2_5gx0a"]
 [ext_resource type="Script" uid="uid://bjwsvosmyrqvp" path="res://stats.gd" id="2_erta8"]
 [ext_resource type="Script" uid="uid://bd2edxcfsqqt1" path="res://damage_boxes/hurtbox.gd" id="4_grp10"]
+[ext_resource type="Script" uid="uid://pohlsv6qsc43" path="res://damage_boxes/hitbox.gd" id="6_ww8v4"]
 
 [sub_resource type="Resource" id="Resource_ww8v4"]
 script = ExtResource("2_erta8")
@@ -51,7 +52,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [5]
 }
 
 [sub_resource type="Animation" id="Animation_grp10"]
@@ -110,7 +111,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [3, 7]
+"values": [1, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww8v4"]
@@ -163,9 +164,12 @@ node_connections = [&"output", 0, &"StateMachine"]
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gx0a"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww8v4"]
+radius = 4.0
+
 [node name="BatEnemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_5gx0a")
 range = 104
@@ -206,3 +210,14 @@ metadata/_custom_type_script = "uid://bd2edxcfsqqt1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_5gx0a")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("6_ww8v4")
+metadata/_custom_type_script = "uid://pohlsv6qsc43"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_ww8v4")
+debug_color = Color(0.885161, 0.275334, 0.48188, 0.42)

@@ -106,6 +106,8 @@ position = Vector2(280, 104)
 
 [node name="BatEnemy" parent="." instance=ExtResource("8_gbfbk")]
 position = Vector2(80, 104)
+collision_mask = 5
 
 [node name="BatEnemy2" parent="." instance=ExtResource("8_gbfbk")]
 position = Vector2(288, 184)
+collision_mask = 5
