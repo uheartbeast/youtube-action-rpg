@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bth14i0usvwsd"]
+[gd_scene load_steps=20 format=3 uid="uid://bth14i0usvwsd"]
 
 [ext_resource type="Script" uid="uid://qmex7p80u81n" path="res://enemies/bat_enemy.gd" id="1_5gx0a"]
 [ext_resource type="Texture2D" uid="uid://1aoe5e3ooxml" path="res://enemies/bat.png" id="1_e7gs6"]
@@ -22,6 +22,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
 
 [sub_resource type="Animation" id="Animation_grp10"]
 resource_name = "fly"
@@ -41,14 +65,59 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_ww8v4"]
+resource_name = "hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww8v4"]
 _data = {
 &"RESET": SubResource("Animation_erta8"),
-&"fly": SubResource("Animation_grp10")
+&"fly": SubResource("Animation_grp10"),
+&"hit": SubResource("Animation_ww8v4")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e7gs6"]
 animation = &"fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_grp10"]
+animation = &"hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5gx0a"]
 animation = &"fly"
@@ -64,15 +133,22 @@ advance_expression = "can_see_player()"
 advance_mode = 2
 advance_expression = "not can_see_player()"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_boacx"]
+advance_mode = 2
+advance_expression = "velocity == Vector2(0, 0)"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_boacx"]
-states/Chase/node = SubResource("AnimationNodeAnimation_e7gs6")
-states/Chase/position = Vector2(454.167, 206)
-states/Idle/node = SubResource("AnimationNodeAnimation_5gx0a")
-states/Idle/position = Vector2(454.333, 100.25)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_grp10"), "Idle", "Chase", SubResource("AnimationNodeStateMachineTransition_erta8"), "Chase", "Idle", SubResource("AnimationNodeStateMachineTransition_ww8v4")]
-graph_offset = Vector2(-11, 22)
+states/ChaseState/node = SubResource("AnimationNodeAnimation_e7gs6")
+states/ChaseState/position = Vector2(454.167, 206)
+states/HitState/node = SubResource("AnimationNodeAnimation_grp10")
+states/HitState/position = Vector2(625, 99.9236)
+states/IdleState/node = SubResource("AnimationNodeAnimation_5gx0a")
+states/IdleState/position = Vector2(454.333, 100.25)
+transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_grp10"), "IdleState", "ChaseState", SubResource("AnimationNodeStateMachineTransition_erta8"), "ChaseState", "IdleState", SubResource("AnimationNodeStateMachineTransition_ww8v4"), "HitState", "IdleState", SubResource("AnimationNodeStateMachineTransition_boacx")]
+graph_offset = Vector2(72, 24)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f4281"]
+graph_offset = Vector2(-80.8333, 77.5)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_boacx")
 nodes/StateMachine/position = Vector2(50, 116.667)
 node_connections = [&"output", 0, &"StateMachine"]
