@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkexmlihmpv74"]
 
-[ext_resource type="Texture2D" uid="uid://b4ia165bka80a" path="res://effects/hit_effect.png" id="1_odesf"]
+[ext_resource type="Texture2D" uid="uid://b4ia165bka80a" path="res://effects/hit_effect.png" id="1_r4b7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_elvhw"]
-atlas = ExtResource("1_odesf")
+atlas = ExtResource("1_r4b7x")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ot2f"]
-atlas = ExtResource("1_odesf")
+atlas = ExtResource("1_r4b7x")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4lxv7"]

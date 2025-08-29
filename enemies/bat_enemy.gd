@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const HIT_EFFECT = preload("res://effects/hit_effect.tscn")
+const HIT_EFFECT = preload("uid://bkexmlihmpv74")
+const DEATH_EFFECT = preload("uid://ra0kqr8k26y5")
 
 const SPEED = 30
 const FRICTION = 500
@@ -20,7 +21,7 @@ const FRICTION = 500
 func _ready() -> void:
 	stats = stats.duplicate()
 	hurtbox.hurt.connect(take_hit.call_deferred)
-	stats.no_health.connect(queue_free)
+	stats.no_health.connect(die)
 
 func _physics_process(delta: float) -> void:
 	var state = playback.get_current_node()
@@ -37,6 +38,12 @@ func _physics_process(delta: float) -> void:
 		"HitState":
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			move_and_slide()
+
+func die() -> void:
+	var death_effect = DEATH_EFFECT.instantiate()
+	get_tree().current_scene.add_child(death_effect)
+	death_effect.global_position = global_position
+	queue_free()
 
 func take_hit(other_hitbox: Hitbox) -> void:
 	var hit_effect = HIT_EFFECT.instantiate()
