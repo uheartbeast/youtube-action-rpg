@@ -819,6 +819,7 @@ collision_layer = 16
 collision_mask = 16
 script = ExtResource("4_yw30f")
 knockback_direction = Vector2(0, 1)
+stores_hit_targets = true
 metadata/_custom_type_script = "uid://pohlsv6qsc43"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
