@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const HIT_EFFECT = preload("res://effects/hit_effect.tscn")
+
 const SPEED = 30
 const FRICTION = 500
 
@@ -12,6 +14,7 @@ const FRICTION = 500
 @onready var playback = animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var center: Marker2D = $Center
 
 
 func _ready() -> void:
@@ -36,6 +39,9 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 func take_hit(other_hitbox: Hitbox) -> void:
+	var hit_effect = HIT_EFFECT.instantiate()
+	get_tree().current_scene.add_child(hit_effect)
+	hit_effect.global_position = center.global_position
 	stats.health -= other_hitbox.damage
 	velocity = other_hitbox.knockback_direction * other_hitbox.knockback_amount
 	playback.start("HitState")
