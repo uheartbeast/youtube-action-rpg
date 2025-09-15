@@ -27,6 +27,7 @@ window/vsync/vsync_mode=3
 [global_group]
 
 player=""
+navigation_polygon_source_geometry_group=""
 
 [input]
 

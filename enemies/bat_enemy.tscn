@@ -223,3 +223,6 @@ debug_color = Color(0.885161, 0.275334, 0.48188, 0.42)
 
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(0, -7)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
