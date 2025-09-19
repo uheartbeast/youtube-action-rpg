@@ -151,9 +151,10 @@ states/HitState/position = Vector2(625, 99.9236)
 states/IdleState/node = SubResource("AnimationNodeAnimation_5gx0a")
 states/IdleState/position = Vector2(454.333, 100.25)
 transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_grp10"), "IdleState", "ChaseState", SubResource("AnimationNodeStateMachineTransition_erta8"), "ChaseState", "IdleState", SubResource("AnimationNodeStateMachineTransition_ww8v4"), "HitState", "IdleState", SubResource("AnimationNodeStateMachineTransition_boacx")]
-graph_offset = Vector2(72, 24)
+graph_offset = Vector2(40, 77)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f4281"]
+graph_offset = Vector2(-94.6901, -20.1419)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_boacx")
 nodes/StateMachine/position = Vector2(50, 116.667)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -227,4 +228,3 @@ position = Vector2(0, -3)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Marker2D"]
 path_desired_distance = 4.0
 target_desired_distance = 4.0
-debug_enabled = true

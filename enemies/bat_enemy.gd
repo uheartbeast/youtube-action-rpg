@@ -72,6 +72,7 @@ func can_see_player() -> bool:
 	if not is_player_in_range(): return false
 	var player: = get_player()
 	ray_cast_2d.target_position = player.global_position - global_position
+	ray_cast_2d.force_raycast_update()
 	var has_los_to_player: = not ray_cast_2d.is_colliding()
 	return has_los_to_player
 	
